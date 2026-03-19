@@ -3,7 +3,6 @@ import numpy as np
 
 from .aabb import AABB
 
-
 class MapOrdering:
     """order of the maps encoding the aabbs around the words"""
     SEG_WORD = 0

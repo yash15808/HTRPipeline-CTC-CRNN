@@ -32,8 +32,6 @@ operations:
 * Run `python scripts/gradio_demo.py`
 * Open the URL shown in the output
 
-![example](./doc/gradio.png)
-
 ### Use Python package
 
 Import the function `read_page` to detect and read text.

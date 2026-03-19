@@ -1,0 +1,320 @@
+2026-03-19 17:24:20,109 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:24:20,731 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:24:21,623 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:26:09,209 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:26:09,747 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 17:26:09,840 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:26:09,902 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 17:26:10,709 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:26:11,141 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 17:26:12,651 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 17:27:50,918 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-03-19 17:27:54,827 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 17:29:31,886 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:29:32,355 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 17:29:32,388 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 17:29:32,488 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:29:33,304 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:29:33,555 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 17:29:34,984 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 17:38:58,805 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:38:59,254 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 17:38:59,299 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 17:38:59,409 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:39:00,269 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:39:00,505 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 17:39:01,880 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 17:41:07,819 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:41:08,277 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 17:41:08,306 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 17:41:08,469 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:41:09,300 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:41:09,612 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 17:41:11,024 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 17:41:36,443 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-03-19 17:41:39,797 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 17:42:21,438 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-03-19 17:42:22,381 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 17:43:06,866 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-03-19 17:43:10,082 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 17:43:25,302 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 17:43:27,197 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 17:43:44,427 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 17:43:46,515 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 17:50:38,309 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 17:50:40,525 - __main__ - INFO - Processed image successfully, found 4 lines
+2026-03-19 17:51:09,567 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 17:51:12,568 - __main__ - INFO - Processed image successfully, found 10 lines
+2026-03-19 17:51:34,340 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-03-19 17:51:38,561 - __main__ - INFO - Processed image successfully, found 11 lines
+2026-03-19 17:52:20,131 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=True
+2026-03-19 17:52:20,823 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 17:52:30,654 - __main__ - INFO - Processed image successfully, found 13 lines
+2026-03-19 17:54:32,763 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 17:54:33,887 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 17:54:34,163 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 17:54:34,219 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 17:54:34,762 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 17:54:35,801 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 17:54:37,186 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 17:54:44,314 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 17:54:44,843 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 17:54:48,535 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 17:56:48,424 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-03-19 17:56:52,654 - __main__ - INFO - Processed image successfully, found 11 lines
+2026-03-19 18:03:40,328 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-03-19 18:03:41,771 - __main__ - INFO - Processed image successfully, found 1 lines
+2026-03-19 18:10:26,119 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:10:26,758 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:10:26,793 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:10:26,862 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:10:27,551 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:10:27,991 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:10:29,599 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:12:00,021 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-03-19 18:12:00,951 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 18:14:09,877 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 18:14:10,500 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 18:20:24,190 - __main__ - INFO - Processing image with scale=13.6, margin=5, use_dict=True
+2026-03-19 18:21:19,749 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:21:20,416 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:21:21,190 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:21:35,354 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:21:35,869 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:21:36,636 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:24:37,923 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:24:38,469 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:24:38,492 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:24:38,613 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:24:39,342 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:24:39,753 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:24:41,237 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:25:55,223 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:25:58,061 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:26:08,575 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 18:30:48,276 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:30:49,524 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:30:49,550 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:30:49,677 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:30:50,042 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:30:51,054 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:30:52,676 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:31:43,746 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:31:46,077 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:31:51,866 - __main__ - INFO - Processed image successfully, found 7 lines
+2026-03-19 18:31:53,066 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:31:53,567 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:31:56,346 - __main__ - INFO - Processed image successfully, found 6 lines
+2026-03-19 18:32:26,753 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 18:32:27,301 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 18:33:42,314 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:33:43,145 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:33:48,467 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 18:35:44,843 - __main__ - INFO - Processing image with scale=9.21, margin=5, use_dict=True
+2026-03-19 18:36:38,465 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:36:39,999 - __main__ - INFO - Processed image successfully, found 5 lines
+2026-03-19 18:36:40,216 - __main__ - INFO - Processing image with scale=2.31, margin=5, use_dict=True
+2026-03-19 18:36:41,170 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:36:42,399 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 18:37:18,529 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:37:19,546 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:37:19,792 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:37:19,838 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:37:20,303 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:37:21,335 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:37:22,773 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:38:27,002 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:38:27,149 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:38:28,178 - __main__ - INFO - Processed image successfully, found 7 lines
+2026-03-19 18:38:45,902 - __main__ - INFO - Processing image with scale=0.8, margin=8, use_dict=True
+2026-03-19 18:38:45,969 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:38:47,122 - __main__ - INFO - Processed image successfully, found 7 lines
+2026-03-19 18:38:51,645 - __main__ - INFO - Processing image with scale=0.3, margin=3, use_dict=True
+2026-03-19 18:38:51,666 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:38:52,716 - __main__ - INFO - Processed image successfully, found 7 lines
+2026-03-19 18:39:03,388 - __main__ - INFO - Processing image with scale=0.3, margin=3, use_dict=True
+2026-03-19 18:39:03,419 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:39:04,660 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 18:42:43,490 - __main__ - INFO - Processing PDF: C:\Users\yash1\AppData\Local\Temp\gradio\1663c5929b294b206bb3393614a6a46901867f447e1e9516da6a828e86917c6f\Resume Yash.pdf
+2026-03-19 18:42:43,492 - __main__ - WARNING - Poppler not found in common locations
+2026-03-19 18:42:43,493 - __main__ - ERROR - Error in process_pdf_enhanced: Poppler not found. Please install from: https://github.com/oschwartz10612/poppler-windows/releases/
+Traceback (most recent call last):
+  File "C:\Projects\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 916, in process_pdf_enhanced
+    images = pdf_processor.pdf_to_images(pdf_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 745, in pdf_to_images
+    raise RuntimeError("Poppler not found. Please install from: https://github.com/oschwartz10612/poppler-windows/releases/")
+RuntimeError: Poppler not found. Please install from: https://github.com/oschwartz10612/poppler-windows/releases/
+2026-03-19 18:44:20,195 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:44:20,437 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:44:21,432 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 18:44:30,570 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:44:32,103 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:44:33,543 - __main__ - INFO - Processed image successfully, found 14 lines
+2026-03-19 18:44:43,785 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:44:44,808 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:44:44,907 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:44:44,948 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:44:45,719 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:44:46,388 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:44:47,885 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:44:51,135 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:44:51,382 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:44:52,664 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 18:45:15,949 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:45:17,909 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:45:23,075 - __main__ - INFO - Processed image successfully, found 12 lines
+2026-03-19 18:45:49,679 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:45:50,175 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:45:53,453 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 18:49:21,607 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:49:22,080 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:49:22,100 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:49:22,304 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:49:23,124 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:49:23,292 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:49:24,809 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:49:37,932 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:49:38,369 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:49:41,714 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 18:50:14,887 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:50:15,463 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:50:15,710 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:50:15,777 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:50:16,224 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:50:17,244 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:50:18,568 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:50:23,273 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:50:23,709 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:50:27,044 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 18:50:57,039 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:50:57,935 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:51:04,206 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 18:51:23,169 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:51:23,576 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:51:26,768 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 18:51:43,304 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:51:45,374 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:51:50,838 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 18:58:09,173 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 18:58:10,114 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 18:58:10,164 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 18:58:10,204 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 18:58:10,878 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 18:58:11,539 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 18:58:13,117 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 18:58:18,766 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 18:58:19,189 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 18:58:22,507 - __main__ - INFO - Processed image successfully, found 2 lines
+2026-03-19 19:02:05,083 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:02:05,544 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:02:05,584 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:02:05,703 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:02:06,573 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:02:06,771 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:02:08,205 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:02:21,470 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:02:23,564 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:02:28,961 - __main__ - INFO - Processed image successfully, found 10 lines
+2026-03-19 19:02:32,834 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:02:34,907 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:02:40,197 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 19:03:17,849 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:03:20,364 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:03:28,496 - __main__ - INFO - Processed image successfully, found 9 lines
+2026-03-19 19:09:41,611 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:09:42,064 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:09:42,094 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:09:42,252 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:09:46,172 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:09:51,184 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:09:52,732 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:10:16,564 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:10:18,865 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:10:24,631 - __main__ - INFO - Processed image successfully, found 9 lines
+2026-03-19 19:12:16,563 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:12:17,663 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:12:17,698 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:12:17,729 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:12:18,287 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:12:19,093 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:12:20,556 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:26:08,672 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:26:09,112 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:26:09,144 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:26:09,327 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:26:10,454 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:26:10,661 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:26:12,110 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:26:38,706 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:26:41,114 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:26:47,408 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 19:27:02,192 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:27:04,560 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:27:10,366 - __main__ - INFO - Processed image successfully, found 9 lines
+2026-03-19 19:29:56,981 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:29:57,442 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:29:57,473 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:29:57,581 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:29:58,438 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:29:58,704 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:30:00,219 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:30:31,749 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:30:33,328 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:30:39,723 - __main__ - INFO - Processed image successfully, found 8 lines
+2026-03-19 19:31:35,323 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:31:35,745 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:31:35,779 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:31:35,998 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:31:36,854 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:31:37,278 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:31:38,704 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:32:05,143 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:32:05,635 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:32:08,950 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 19:32:19,414 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:32:21,744 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:32:27,725 - __main__ - INFO - Processed image successfully, found 10 lines
+2026-03-19 19:33:13,384 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:33:15,709 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:33:21,884 - __main__ - INFO - Processed image successfully, found 9 lines
+2026-03-19 19:33:45,243 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:33:45,595 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:33:47,264 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 19:33:59,745 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:34:01,916 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:34:07,980 - __main__ - INFO - Processed image successfully, found 11 lines
+2026-03-19 19:34:14,608 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:34:16,766 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:34:22,600 - __main__ - INFO - Processed image successfully, found 11 lines
+2026-03-19 19:34:41,827 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:34:42,259 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:34:42,302 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:34:42,410 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:34:43,671 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:34:43,797 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:34:45,182 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:35:33,860 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:35:34,832 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:35:34,927 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:35:34,963 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:35:35,861 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:35:36,537 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:35:37,842 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:36:20,952 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:36:21,822 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:36:21,934 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:36:21,975 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-03-19 19:36:22,955 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:36:23,404 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:36:24,856 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:46:23,768 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-03-19 19:46:24,198 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7861/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-03-19 19:46:24,237 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7861/ "HTTP/1.1 200 OK"
+2026-03-19 19:46:24,358 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 19:46:25,174 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 19:46:25,392 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 19:46:27,059 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 19:46:36,935 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 19:46:37,474 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 19:46:40,865 - __main__ - INFO - Processed image successfully, found 3 lines

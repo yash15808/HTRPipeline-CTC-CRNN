@@ -1,0 +1,161 @@
+2026-02-08 11:15:15,291 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-02-08 11:15:16,536 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-02-08 11:15:16,574 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-02-08 11:15:16,925 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-02-08 11:15:18,089 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-02-08 11:16:39,766 - __main__ - INFO - Processing image with scale=1, margin=4, use_dict=True
+2026-02-08 11:16:45,067 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:17:05,595 - __main__ - INFO - Processing image with scale=0.8, margin=8, use_dict=True
+2026-02-08 11:17:08,254 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:17:19,024 - __main__ - INFO - Processing image with scale=0.8, margin=8, use_dict=True
+2026-02-08 11:17:21,684 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:17:39,509 - __main__ - INFO - Processing image with scale=0.25, margin=1, use_dict=False
+2026-02-08 11:17:39,632 - __main__ - INFO - Processed image successfully, found 1 lines
+2026-02-08 11:17:49,636 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-02-08 11:17:51,352 - __main__ - INFO - Processed image successfully, found 11 lines
+2026-02-08 11:18:09,674 - __main__ - INFO - Processing PDF: C:\Users\shubh\AppData\Local\Temp\gradio\6c735eb6d8b066843e44a45abb8af8e5ca39e80d9e81a6370fd32d826e723a92\sample.pdf
+2026-02-08 11:18:09,676 - __main__ - INFO - Found Poppler at: C:\poppler\poppler\Library\bin
+2026-02-08 11:18:09,677 - __main__ - INFO - Converting PDF to images using Poppler path: C:\poppler\poppler\Library\bin
+2026-02-08 11:18:11,637 - __main__ - INFO - Converted 1 pages from PDF
+2026-02-08 11:18:11,639 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-02-08 11:18:21,522 - __main__ - INFO - Processed image successfully, found 30 lines
+2026-02-08 11:18:21,523 - __main__ - INFO - PDF processing completed: 1 pages, 363 words
+2026-02-08 11:18:42,043 - __main__ - INFO - Processing PDF: C:\Users\shubh\AppData\Local\Temp\gradio\6c735eb6d8b066843e44a45abb8af8e5ca39e80d9e81a6370fd32d826e723a92\sample.pdf
+2026-02-08 11:18:42,044 - __main__ - INFO - Found Poppler at: C:\poppler\poppler\Library\bin
+2026-02-08 11:18:42,045 - __main__ - INFO - Converting PDF to images using Poppler path: C:\poppler\poppler\Library\bin
+2026-02-08 11:18:42,451 - __main__ - INFO - Converted 1 pages from PDF
+2026-02-08 11:18:42,452 - __main__ - INFO - Processing image with scale=0.57, margin=5, use_dict=False
+2026-02-08 11:18:47,303 - __main__ - INFO - Processed image successfully, found 28 lines
+2026-02-08 11:18:47,304 - __main__ - INFO - PDF processing completed: 1 pages, 256 words
+2026-02-08 11:19:05,549 - __main__ - INFO - Processing PDF: C:\Users\shubh\AppData\Local\Temp\gradio\6c735eb6d8b066843e44a45abb8af8e5ca39e80d9e81a6370fd32d826e723a92\sample.pdf
+2026-02-08 11:19:05,549 - __main__ - INFO - Found Poppler at: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:05,550 - __main__ - INFO - Converting PDF to images using Poppler path: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:05,883 - __main__ - INFO - Converted 1 pages from PDF
+2026-02-08 11:19:05,886 - __main__ - INFO - Processing image with scale=0.57, margin=4, use_dict=True
+2026-02-08 11:19:07,567 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:19:07,570 - __main__ - INFO - PDF processing completed: 1 pages, 0 words
+2026-02-08 11:19:13,749 - __main__ - INFO - Processing PDF: C:\Users\shubh\AppData\Local\Temp\gradio\6c735eb6d8b066843e44a45abb8af8e5ca39e80d9e81a6370fd32d826e723a92\sample.pdf
+2026-02-08 11:19:13,750 - __main__ - INFO - Found Poppler at: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:13,750 - __main__ - INFO - Converting PDF to images using Poppler path: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:14,239 - __main__ - INFO - Converted 1 pages from PDF
+2026-02-08 11:19:14,241 - __main__ - INFO - Processing image with scale=0.57, margin=5, use_dict=True
+2026-02-08 11:19:16,001 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:19:16,004 - __main__ - INFO - PDF processing completed: 1 pages, 0 words
+2026-02-08 11:19:23,466 - __main__ - INFO - Processing PDF: C:\Users\shubh\AppData\Local\Temp\gradio\6c735eb6d8b066843e44a45abb8af8e5ca39e80d9e81a6370fd32d826e723a92\sample.pdf
+2026-02-08 11:19:23,467 - __main__ - INFO - Found Poppler at: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:23,468 - __main__ - INFO - Converting PDF to images using Poppler path: C:\poppler\poppler\Library\bin
+2026-02-08 11:19:23,812 - __main__ - INFO - Converted 1 pages from PDF
+2026-02-08 11:19:23,813 - __main__ - INFO - Processing image with scale=0.57, margin=5, use_dict=True
+2026-02-08 11:19:25,414 - __main__ - ERROR - Error in process_page: '+' is not in list
+Traceback (most recent call last):
+  File "C:\Users\shubh\OneDrive\Desktop\HTRPipeline-CTC\scripts\pdf_gradio_demo.py", line 185, in process_page
+    read_lines = read_page(img,
+                           detector_config=DetectorConfig(scale=scale, margin=margin),
+                           line_clustering_config=LineClusteringConfig(min_words_per_line=min_words_per_line),
+                           reader_config=ReaderConfig(decoder='word_beam_search' if use_dictionary else 'best_path',
+                                                      prefix_tree=config.prefix_tree if use_dictionary else None))
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\__init__.py", line 59, in read_page
+    text = read(word.img, reader_config.decoder, reader_config.prefix_tree)
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\__init__.py", line 61, in read
+    text = ctc_single_word_beam_search(outputs[0], _CHARS, 25, prefix_tree)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\site-packages\htr_pipeline\reader\ctc.py", line 104, in ctc_single_word_beam_search
+    label_idx = chars.index(c) + 1
+                ~~~~~~~~~~~^^^
+ValueError: '+' is not in list
+2026-02-08 11:19:25,418 - __main__ - INFO - PDF processing completed: 1 pages, 0 words
+2026-02-08 11:27:02,557 - __main__ - INFO - Loaded dictionary with 370106 words
+2026-02-08 11:27:03,625 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2026-02-08 11:27:03,665 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2026-02-08 11:27:04,154 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-02-08 11:27:05,197 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-02-08 11:27:33,174 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=False
+2026-02-08 11:27:40,023 - __main__ - INFO - Processed image successfully, found 13 lines
+2026-02-08 11:28:00,075 - __main__ - INFO - Processing image with scale=1, margin=7, use_dict=True
+2026-02-08 11:28:04,787 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-02-08 11:28:10,909 - __main__ - INFO - Processed image successfully, found 13 lines
+2026-02-08 11:28:29,139 - __main__ - INFO - Processing image with scale=0.74, margin=7, use_dict=True
+2026-02-08 11:28:31,343 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-02-08 11:28:37,088 - __main__ - INFO - Processed image successfully, found 13 lines
+2026-02-08 11:29:10,362 - __main__ - INFO - Processing image with scale=0.35, margin=10, use_dict=False
+2026-02-08 11:29:12,115 - __main__ - INFO - Processed image successfully, found 11 lines
