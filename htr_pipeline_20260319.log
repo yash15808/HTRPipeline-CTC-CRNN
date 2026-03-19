@@ -335,3 +335,8 @@ RuntimeError: Poppler not found. Please install from: https://github.com/oschwar
 2026-03-19 20:15:38,888 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
 2026-03-19 20:15:39,198 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
 2026-03-19 20:15:40,636 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 20:27:04,841 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 20:27:05,354 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 20:27:08,678 - __main__ - INFO - Processed image successfully, found 3 lines
+2026-03-19 20:32:10,066 - __main__ - INFO - Processing image with scale=0.4, margin=1, use_dict=False
+2026-03-19 20:32:11,896 - __main__ - INFO - Processed image successfully, found 5 lines
