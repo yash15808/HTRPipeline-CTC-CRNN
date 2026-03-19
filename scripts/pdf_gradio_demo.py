@@ -636,15 +636,23 @@
 import json
 import tempfile
 import os
+import io
+import base64
 import cv2
 import gradio as gr
 import numpy as np
+from PIL import Image
 from pdf2image import convert_from_path
 from htr_pipeline import read_page, DetectorConfig, LineClusteringConfig, ReaderConfig, PrefixTree
 import logging
 from datetime import datetime
 from functools import lru_cache
 import threading
+from dotenv import load_dotenv
+from mistralai.client import Mistral
+
+# Load environment variables from .env
+load_dotenv()
 
 # Setup logging
 def setup_logging(debug=False):
@@ -792,10 +800,78 @@ def create_parameter_presets():
     }
     return presets
 
+# Mistral OCR text extraction
+def extract_text_with_mistral(img):
+    """Extract text from an image using Mistral OCR API"""
+    try:
+        # Reload .env each time so key changes take effect without restart
+        load_dotenv(override=True)
+        api_key = os.getenv('MISTRAL_API_KEY')
+        if not api_key:
+            return "Error: MISTRAL_API_KEY not found in .env file. Get a free key at https://console.mistral.ai/"
+        
+        client = Mistral(api_key=api_key)
+        
+        # Convert numpy array to PIL Image, then to base64
+        if len(img.shape) == 2:  # Grayscale
+            pil_img = Image.fromarray(img, mode='L').convert('RGB')
+        else:  # RGB/BGR
+            if img.shape[2] == 3:
+                pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+            else:
+                pil_img = Image.fromarray(img)
+        
+        # Encode image as base64
+        buffer = io.BytesIO()
+        pil_img.save(buffer, format='PNG')
+        img_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+        image_data_url = f"data:image/png;base64,{img_base64}"
+        
+        # Call Mistral OCR
+        ocr_response = client.ocr.process(
+            model="mistral-ocr-latest",
+            document={
+                "type": "image_url",
+                "image_url": image_data_url
+            }
+        )
+        
+        # Extract text from all pages in the response
+        extracted_text = ""
+        if ocr_response and ocr_response.pages:
+            for page in ocr_response.pages:
+                extracted_text += page.markdown + "\n"
+        
+        if extracted_text.strip():
+            logger.info(f"Local LLM extracted {len(extracted_text)} characters")
+            return extracted_text.strip()
+        else:
+            return "Error: Mistral OCR returned an empty response"
+    
+    except Exception as e:
+        error_msg = f"Local LLM Model Error: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        return error_msg
+
 # SAFE Processing Function with error handling for '+' issue
-def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug=False):
+def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug=False, use_cloud_ocr=False):
     """Safe version of process_page that handles the '+' error"""
     try:
+        if img is None:
+            return "Please provide an image", None, []
+        
+        # --- Cloud OCR (Mistral) path ---
+        if use_cloud_ocr:
+            logger.info("Using Local LLM for text extraction")
+            text = extract_text_with_mistral(img)
+            # Return original image as visualization (no bounding boxes)
+            if len(img.shape) == 2:
+                vis_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+            else:
+                vis_img = img.copy()
+            return text, vis_img, []
+        
+        # --- Local ONNX path (unchanged) ---
         # Input validation
         validate_inputs(scale, margin, min_words_per_line, text_scale)
         
@@ -893,7 +969,7 @@ def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, te
             error_msg += f"\n\nDetailed error: {repr(e)}"
         return error_msg, vis_img, []
 
-def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_line, text_scale, debug=False):
+def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_line, text_scale, debug=False, use_cloud_ocr=False):
     """Enhanced PDF processing with progress and better error handling"""
     if pdf_file is None:
         return "Please upload a PDF file", None, "**Status:** Waiting for PDF upload..."
@@ -934,7 +1010,7 @@ def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_
                 
                 page_text, vis_img, read_lines = safe_process_page(
                     image, scale, margin, use_dictionary, min_words_per_line, 
-                    text_scale, debug=debug
+                    text_scale, debug=debug, use_cloud_ocr=use_cloud_ocr
                 )
                 
                 # Safely calculate statistics
@@ -1127,6 +1203,8 @@ def create_enhanced_ui():
                         with gr.Row():
                             debug_checkbox = gr.Checkbox(value=False, label='Enable Debug Mode')
                             flip_checkbox = gr.Checkbox(value=False, label='Flip Image (Webcam Fix)')
+                        with gr.Row():
+                            cloud_ocr_checkbox = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
                     
                     process_btn = gr.Button("🎯 Process Image", variant="primary", size="lg", elem_classes="process-btn")
                 
@@ -1172,6 +1250,7 @@ def create_enhanced_ui():
                         pdf_words = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
                         pdf_text_scale = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
                         pdf_debug = gr.Checkbox(value=False, label='Enable Debug Mode')
+                        pdf_cloud_ocr = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
                     
                     pdf_process_btn = gr.Button("🎯 Process PDF Document", variant="primary", size="lg", elem_classes="process-btn")
                 
@@ -1338,22 +1417,22 @@ def create_enhanced_ui():
         )
         
         # Connect processing buttons - use safe_process_page for single image
-        def safe_process_page_wrapper(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, flip_image):
+        def safe_process_page_wrapper(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, flip_image, use_cloud_ocr):
             if img is not None and flip_image:
                 import cv2
                 img = cv2.flip(img, 1)
-            text, vis_img, _ = safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug)
+            text, vis_img, _ = safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, use_cloud_ocr=use_cloud_ocr)
             return text, vis_img
         
         process_btn.click(
             fn=safe_process_page_wrapper,
-            inputs=[image_input, scale_slider, margin_slider, dictionary_checkbox, words_slider, text_scale_slider, debug_checkbox, flip_checkbox],
+            inputs=[image_input, scale_slider, margin_slider, dictionary_checkbox, words_slider, text_scale_slider, debug_checkbox, flip_checkbox, cloud_ocr_checkbox],
             outputs=[text_output, image_output]
         )
         
         pdf_process_btn.click(
             fn=process_pdf_enhanced,
-            inputs=[pdf_input, pdf_dictionary, pdf_scale, pdf_margin, pdf_words, pdf_text_scale, pdf_debug],
+            inputs=[pdf_input, pdf_dictionary, pdf_scale, pdf_margin, pdf_words, pdf_text_scale, pdf_debug, pdf_cloud_ocr],
             outputs=[pdf_text_output, pdf_image_output, pdf_page_info]
         )
         

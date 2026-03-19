@@ -13,7 +13,9 @@ setup(
                       'path',
                       'pillow',
                       'gradio',
-                      'matplotlib'],
+                      'matplotlib',
+                      'mistralai',
+                      'python-dotenv'],
     python_requires='>=3.8',
     package_data={'htr_pipeline.models': ['*']}
 )
