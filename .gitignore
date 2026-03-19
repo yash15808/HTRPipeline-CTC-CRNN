@@ -2,3 +2,7 @@
 __pycache__
 htr_pipeline.egg-info
 build
+*.log
+*.zip
+.gradio
+iam_dataset
