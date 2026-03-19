@@ -329,3 +329,9 @@ RuntimeError: Poppler not found. Please install from: https://github.com/oschwar
 2026-03-19 20:15:21,877 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7861/gradio_api/startup-events "HTTP/1.1 200 OK"
 2026-03-19 20:15:21,907 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7861/ "HTTP/1.1 200 OK"
 2026-03-19 20:15:21,997 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+2026-03-19 20:15:22,856 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-19 20:15:23,184 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2026-03-19 20:15:24,685 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+2026-03-19 20:15:38,888 - __main__ - INFO - Processing image with scale=1, margin=5, use_dict=True
+2026-03-19 20:15:39,198 - __main__ - WARNING - Encountered '+' error. Trying alternative parameters...
+2026-03-19 20:15:40,636 - __main__ - INFO - Processed image successfully, found 3 lines
