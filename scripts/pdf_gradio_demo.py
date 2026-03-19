@@ -1121,38 +1121,181 @@ def simple_export(text, format_type):
 def create_enhanced_ui():
     """Create enhanced Gradio interface with improved design"""
     
-    # Updated CSS with improved color scheme
     custom_css = """
-    /* Dark Theme */
-    body, .gradio-container { background-color: #0b0f19 !important; color: #e2e8f0 !important; font-family: 'Inter', sans-serif !important; }
+    /* Core Variables */
+    :root {
+      --app-bg: #0f172a;
+      --panel-bg: rgba(30, 41, 59, 0.45);
+      --accent-1: #3b82f6;
+      --accent-2: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.08);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --app-bg: #f8fafc;
+        --panel-bg: rgba(255, 255, 255, 0.6);
+        --accent-1: #2563eb;
+        --accent-2: #7c3aed;
+        --accent-glow: rgba(124, 58, 237, 0.4);
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border-color: rgba(0, 0, 0, 0.08);
+      }
+    }
     
-    .title-header { display: flex; align-items: center; gap: 15px; margin-bottom: -10px; }
-    .logo-icon { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 5px 12px; border-radius: 8px; font-weight: bold; }
-    .title-text h1 { color: white !important; font-size: 24px !important; margin: 0 !important; }
-    .subtitle { color: #94a3b8; font-size: 14px; margin-top: 5px; margin-bottom: 20px; }
+    /* Global Background and Animations */
+    @keyframes fadeInScale { 
+        0% { opacity: 0; transform: translateY(15px) scale(0.98); } 
+        100% { opacity: 1; transform: translateY(0) scale(1); } 
+    }
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
     
-    .status-prepare { background-color: #111827; border: 1px solid #1e293b; border-radius: 8px; padding: 15px; color: white; font-weight: 600; margin-bottom: 20px; }
+    body, .gradio-container { 
+        background-color: var(--app-bg) !important; 
+        color: var(--text-main) !important; 
+        font-family: 'Inter', system-ui, sans-serif !important;
+        background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 30%), 
+                          radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 30%);
+        background-attachment: fixed;
+    }
     
-    .panel-block { background-color: #111827 !important; border: 1px solid #1e293b !important; border-radius: 8px !important; }
+    /* Glassmorphic Panels */
+    .gr-box, .panel-block, .gradio-container > .main, .gr-form, .gr-panel, div[role="group"] {
+        background: var(--panel-bg) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        animation: fadeInScale 0.6s ease-out forwards;
+    }
+    .gr-box:hover, div[role="group"]:hover {
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-2px);
+    }
     
-    .preset-dense { background: linear-gradient(135deg, #f43f5e, #e11d48) !important; border: none !important; color: white !important; }
-    .preset-sparse { background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; border: none !important; color: white !important; }
-    .preset-printed { background: linear-gradient(135deg, #d946ef, #c026d3) !important; border: none !important; color: white !important; }
-    .preset-hist { background: linear-gradient(135deg, #f59e0b, #d97706) !important; border: none !important; color: white !important; }
+    /* Headers & Typography */
+    .title-header { display: flex; align-items: center; gap: 15px; margin-bottom: -5px; }
+    .logo-icon { 
+        background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); 
+        color: white; padding: 8px 14px; border-radius: 12px; font-weight: 800; font-size: 20px;
+        box-shadow: 0 0 15px var(--accent-glow);
+        animation: pulse 2.5s infinite alternate;
+    }
+    @keyframes pulse { 
+        from { box-shadow: 0 0 10px var(--accent-glow); transform: scale(1); } 
+        to { box-shadow: 0 0 25px var(--accent-glow); transform: scale(1.05); } 
+    }
+    .title-text h1 { 
+        color: var(--text-main) !important; 
+        font-size: 32px !important; margin: 0 !important; font-weight: 800 !important;
+        background: linear-gradient(to right, var(--text-main), var(--text-muted));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+    .subtitle { color: var(--text-muted); font-size: 15px; margin-top: 5px; margin-bottom: 25px; letter-spacing: 0.5px; font-weight: 500; }
     
-    .process-btn { background: linear-gradient(135deg, #0ea5e9, #0284c7) !important; border: none !important; color: white !important; }
-    .export-btn { background: #10b981 !important; border: none !important; color: white !important; }
+    /* Dynamic Buttons */
+    button { 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+        border-radius: 12px !important; 
+        font-weight: 700 !important; 
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        font-size: 14px !important;
+    }
+    button:hover { transform: translateY(-3px) scale(1.02) !important; }
+    button:active { transform: translateY(1px) scale(0.98) !important; }
     
-    .footer-status { background-color: #111827; border: 1px solid #1e293b; border-radius: 8px; padding: 10px 20px; margin-top: 20px; font-size: 13px; color: #94a3b8; }
-    .status-tag { background-color: #1e293b; color: #6366f1; padding: 2px 10px; border-radius: 12px; }
+    .process-btn { 
+        background: linear-gradient(270deg, var(--accent-1), var(--accent-2), var(--accent-1)) !important; 
+        background-size: 200% 200% !important;
+        animation: gradientBG 4s ease infinite !important;
+        border: none !important; color: white !important; 
+        box-shadow: 0 8px 20px 0 var(--accent-glow) !important;
+        margin-top: 20px !important;
+        height: 56px !important;
+    }
+    .process-btn:hover { box-shadow: 0 12px 30px var(--accent-glow) !important; filter: brightness(1.15); }
     
-    .tabs { border-bottom: 1px solid #1e293b !important; }
-    .tab-nav button { background-color: transparent !important; border: 1px solid #1e293b !important; border-radius: 20px !important; padding: 8px 16px !important; color: #94a3b8 !important; }
-    .tab-nav button.selected { background-color: #1e293b !important; color: white !important; }
+    .export-btn { 
+        background: linear-gradient(135deg, #10b981, #059669) !important; 
+        border: none !important; color: white !important; 
+        box-shadow: 0 4px 15px 0 rgba(16, 185, 129, 0.4) !important; 
+    }
+    .export-btn:hover { box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6) !important; }
     
-    input, textarea, select { background-color: #0b0f19 !important; border: 1px solid #1e293b !important; color: white !important; }
-    .gradio-container video { transform: scaleX(1) !important; }
-
+    /* Inputs, Sliders and Forms */
+    input, textarea, select, .gr-input, input[type="range"] { 
+        background-color: rgba(0,0,0,0.25) !important; 
+        border: 1px solid var(--border-color) !important; 
+        color: var(--text-main) !important; 
+        border-radius: 10px !important;
+        transition: all 0.3s ease !important;
+    }
+    @media (prefers-color-scheme: light) {
+        input, textarea, select, .gr-input, input[type="range"] { background-color: rgba(255,255,255,0.7) !important; }
+    }
+    input:focus, textarea:focus, select:focus, input:hover, textarea:hover { 
+        border-color: var(--accent-1) !important; 
+        box-shadow: 0 0 0 3px var(--accent-glow) !important; 
+        transform: translateY(-1px);
+        background-color: rgba(0,0,0,0.4) !important;
+    }
+    
+    /* Tabs & Navigation */
+    .tabs { border-bottom: none !important; background: transparent !important; margin-top: 10px; }
+    .tab-nav { border-bottom: 1px solid var(--border-color) !important; margin-bottom: 25px !important; gap: 15px !important;}
+    .tab-nav button { 
+        background-color: transparent !important; 
+        border: none !important; 
+        border-bottom: 3px solid transparent !important;
+        border-radius: 0 !important; 
+        padding: 12px 10px !important; 
+        color: var(--text-muted) !important; 
+        font-weight: 600 !important;
+        font-size: 15px !important;
+        transition: all 0.3s ease !important;
+    }
+    .tab-nav button:hover { color: var(--text-main) !important; transform: translateY(-2px) !important; }
+    .tab-nav button.selected { 
+        background-color: transparent !important; 
+        border-bottom: 3px solid var(--accent-1) !important; 
+        color: var(--accent-1) !important; 
+        text-shadow: 0 0 10px var(--accent-glow);
+    }
+    
+    /* Status Labels */
+    .status-prepare { 
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+        border: 1px solid var(--accent-glow); 
+        border-left: 5px solid var(--accent-1);
+        border-radius: 12px; padding: 15px 25px; color: var(--text-main); font-weight: 700; margin-bottom: 30px; 
+        display: flex; gap: 15px; align-items: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .footer-status { 
+        background: var(--panel-bg); backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color); border-radius: 14px; padding: 15px 25px; margin-top: 40px; font-size: 14px; color: var(--text-muted); 
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .status-tag { background-color: rgba(59, 130, 246, 0.2); border: 1px solid var(--accent-glow); color: var(--accent-1); padding: 5px 15px; border-radius: 20px; font-weight: 700;}
+    
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 5px; border: 2px solid transparent; background-clip: padding-box; }
+    ::-webkit-scrollbar-thumb:hover { background-color: rgba(255,255,255,0.4); }
     """
     
     with gr.Blocks(title="Ink2Text HTR Pipeline", theme=gr.themes.Base(), css=custom_css) as demo:
@@ -1162,7 +1305,7 @@ def create_enhanced_ui():
                 <div class="logo-icon">=</div>
                 <div class="title-text">
                     <h1>Ink2Text</h1>
-                    <div style="color: #94a3b8; font-size: 13px; margin-top: -2px;">Handwritten Text Recognition</div>
+                    <div style="color: var(--ctp-subtext0); font-size: 13px; margin-top: -2px;">Handwritten Text Recognition</div>
                 </div>
             </div>
             <div class="subtitle">Transform handwritten documents into digital text with AI-powered precision</div>
@@ -1178,48 +1321,36 @@ def create_enhanced_ui():
         with gr.Tab("🖼️ Single Image Processing"):
             gr.Markdown("### Process Individual Handwritten Images")
             
-            with gr.Row():
-                with gr.Column():
-                    # Parameter Presets
-                    gr.Markdown("#### 🎛️ Quick Presets")
-                    with gr.Row():
-                        dense_btn = gr.Button("📑 Dense Text", size="sm", elem_classes="preset-dense")
-                        sparse_btn = gr.Button("📄 Sparse Text", size="sm", elem_classes="preset-sparse")
-                        forms_btn = gr.Button("📋 Printed Forms", size="sm", elem_classes="preset-printed")
-                        historical_btn = gr.Button("📜 Historical Docs", size="sm", elem_classes="preset-hist")
-                    
+            with gr.Row(equal_height=False):
+                with gr.Column(scale=1):
                     image_input = gr.Image(label='Upload Handwritten Image', type="numpy", height=300)
                     
-                    with gr.Accordion("⚙️ Advanced Parameters", open=True):
-                        with gr.Row():
-                            compute_dropdown = gr.Dropdown(choices=["GPU (CUDA)", "CPU"], value="GPU (CUDA)", label="Compute", interactive=True)
-                            scale_slider = gr.Slider(0.01, 15, 1, step=0.01, label='Detection Scale') 
-                        with gr.Row():
-                            margin_slider = gr.Slider(0, 20, 5, step=1, label='Text Margin')
-                            dictionary_checkbox = gr.Checkbox(value=True, label='Use Dictionary for Better Accuracy')
-                        with gr.Row():
-                            words_slider = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
-                            text_scale_slider = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
-                        with gr.Row():
-                            debug_checkbox = gr.Checkbox(value=False, label='Enable Debug Mode')
-                            flip_checkbox = gr.Checkbox(value=False, label='Flip Image (Webcam Fix)')
-                        with gr.Row():
-                            cloud_ocr_checkbox = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
-                    
+                    with gr.Group():
+                        with gr.Accordion("⚙️ Parameters", open=True):
+                            with gr.Row():
+                                compute_dropdown = gr.Dropdown(choices=["GPU (CUDA)", "CPU"], value="GPU (CUDA)", label="Compute", interactive=True)
+                                scale_slider = gr.Slider(0.01, 15, 1, step=0.01, label='Detection Scale') 
+                            with gr.Row():
+                                margin_slider = gr.Slider(0, 20, 5, step=1, label='Text Margin')
+                                dictionary_checkbox = gr.Checkbox(value=True, label='Use Dictionary for Better Accuracy')
+                            with gr.Row():
+                                words_slider = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
+                                text_scale_slider = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
+                            with gr.Row():
+                                debug_checkbox = gr.Checkbox(value=False, label='Enable Debug Mode')
+                                flip_checkbox = gr.Checkbox(value=False, label='Flip Image (Webcam Fix)')
+                            with gr.Row():
+                                cloud_ocr_checkbox = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
+                        
                     process_btn = gr.Button("🎯 Process Image", variant="primary", size="lg", elem_classes="process-btn")
                 
-                with gr.Column():
-                    text_output = gr.Textbox(label='Extracted Text', lines=12)
-                    
-                    with gr.Row():
-                        export_format = gr.Radio(["txt", "json"], value="txt", label="Export Format", interactive=True)
-                        export_btn = gr.Button("💾 Export Results", variant="secondary", elem_classes="export-btn")
-                    export_download = gr.File(
-                        label="Download Export", 
-                        visible=False,
-                        file_count="single",
-                        height=50
-                    )
+                with gr.Column(scale=1):
+                    with gr.Group():
+                        text_output = gr.Textbox(label='Extracted Text', lines=12)
+                        with gr.Row():
+                            export_format = gr.Radio(["txt", "json"], value="txt", label="Export Format", interactive=True)
+                            export_btn = gr.Button("💾 Export Results", variant="secondary", elem_classes="export-btn")
+                        export_download = gr.File(label="Download Export", visible=False, file_count="single", height=50)
                     
                     image_output = gr.Image(label='Text Detection Visualization', height=400)
             
@@ -1235,97 +1366,57 @@ def create_enhanced_ui():
         with gr.Tab("📄 PDF Document Processing"):
             gr.Markdown("### Process Multi-page PDF Documents")
             
-            with gr.Row():
-                with gr.Column():
-                    pdf_input = gr.File(
-                        label="Upload PDF Document", 
-                        file_types=[".pdf"], 
-                        height=50
-                    )
+            with gr.Row(equal_height=False):
+                with gr.Column(scale=1):
+                    pdf_input = gr.File(label="Upload PDF Document", file_types=[".pdf"], height=50)
                     
-                    with gr.Accordion("⚙️ Processing Parameters", open=True):
-                        pdf_scale = gr.Slider(0.01, 15, 1, step=0.01, label='Detection Scale') 
-                        pdf_margin = gr.Slider(0, 20, 5, step=1, label='Text Margin')
-                        pdf_dictionary = gr.Checkbox(value=False, label='Use Dictionary for Better Accuracy')
-                        pdf_words = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
-                        pdf_text_scale = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
-                        pdf_debug = gr.Checkbox(value=False, label='Enable Debug Mode')
-                        pdf_cloud_ocr = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
-                    
+                    with gr.Group():
+                        with gr.Accordion("⚙️ Processing Parameters", open=True):
+                            pdf_scale = gr.Slider(0.01, 15, 1, step=0.01, label='Detection Scale') 
+                            pdf_margin = gr.Slider(0, 20, 5, step=1, label='Text Margin')
+                            pdf_dictionary = gr.Checkbox(value=False, label='Use Dictionary for Better Accuracy')
+                            pdf_words = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
+                            pdf_text_scale = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
+                            pdf_debug = gr.Checkbox(value=False, label='Enable Debug Mode')
+                            pdf_cloud_ocr = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
+                        
                     pdf_process_btn = gr.Button("🎯 Process PDF Document", variant="primary", size="lg", elem_classes="process-btn")
                 
-                with gr.Column():
-                    pdf_text_output = gr.Textbox(label='Extracted Text from All Pages', lines=12)
-                    
-                    with gr.Row():
-                        pdf_export_format = gr.Radio(["txt", "json"], value="txt", label="Export Format", interactive=True)
-                        pdf_export_btn = gr.Button("💾 Export Results", variant="secondary", elem_classes="export-btn")
-                    pdf_export_download = gr.File(
-                        label="Download Export", 
-                        visible=False,
-                        file_count="single",
-                        height=50
-                    )
+                with gr.Column(scale=1):
+                    with gr.Group():
+                        pdf_text_output = gr.Textbox(label='Extracted Text from All Pages', lines=12)
+                        with gr.Row():
+                            pdf_export_format = gr.Radio(["txt", "json"], value="txt", label="Export Format", interactive=True)
+                            pdf_export_btn = gr.Button("💾 Export Results", variant="secondary", elem_classes="export-btn")
+                        pdf_export_download = gr.File(label="Download Export", visible=False, file_count="single", height=50)
                     
                     pdf_image_output = gr.Image(label='First Page Visualization', height=400)
                     pdf_page_info = gr.Markdown("**Status:** Ready to process PDF documents")
         
-        with gr.Tab("🔧 Batch Processing"):
-            gr.Markdown("### Process Multiple Files in Batch")
-            
-            with gr.Row():
-                with gr.Column():
-                    batch_files = gr.File(
-                        label="Upload Multiple Files", 
-                        file_count="multiple",
-                        file_types=[".pdf", ".png", ".jpg", ".jpeg"],
-                        height=100
-                    )
-                    
-                    with gr.Accordion("Batch Processing Settings", open=False):
-                        batch_scale = gr.Slider(0.01, 15, 1, step=0.01, label='Detection Scale') 
-                        batch_margin = gr.Slider(0, 20, 5, step=1, label='Text Margin')
-                        batch_dictionary = gr.Checkbox(value=False, label='Use Dictionary')
-                    
-                    batch_process_btn = gr.Button("🚀 Process Batch Files", variant="primary")
-                
-                with gr.Column():
-                    batch_results = gr.File(label="Download Combined Results")
-                    batch_summary = gr.JSON(label="Processing Summary")
-                    gr.Markdown("""
-                    <div class="info-box">
-                    <strong>📦 Batch Processing Features:</strong>
-                    <ul>
-                    <li>Process multiple PDFs and images simultaneously</li>
-                    <li>Combined results in single output file</li>
-                    <li>Individual file processing statistics</li>
-                    <li>Optimized for large document sets</li>
-                    </ul>
-                    </div>
-                    """)
-        
         with gr.Tab("⚙️ Settings & Configuration"):
             gr.Markdown("### Application Settings & System Configuration")
             
-            with gr.Row():
-                with gr.Column():
-                    gr.Markdown("#### Performance Settings")
-                    cache_size = gr.Slider(1, 100, 10, label="Cache Size (files)")
-                    auto_save = gr.Checkbox(value=True, label="Auto-save Results")
-                    default_params = gr.Button("🔄 Reset to Default Parameters", variant="secondary")
+            with gr.Row(equal_height=False):
+                with gr.Column(scale=1):
+                    with gr.Group():
+                        gr.Markdown("#### Performance Settings")
+                        cache_size = gr.Slider(1, 100, 10, label="Cache Size (files)")
+                        auto_save = gr.Checkbox(value=True, label="Auto-save Results")
+                        default_params = gr.Button("🔄 Reset to Default Parameters", variant="secondary")
                 
-                with gr.Column():
-                    gr.Markdown("#### System Operations")
-                    clear_cache_btn = gr.Button("🗑️ Clear System Cache", variant="secondary")
-                    export_settings = gr.Button("📤 Export Application Settings", variant="secondary")
-                    settings_status = gr.Markdown("")
+                with gr.Column(scale=1):
+                    with gr.Group():
+                        gr.Markdown("#### System Operations")
+                        clear_cache_btn = gr.Button("🗑️ Clear System Cache", variant="secondary")
+                        export_settings = gr.Button("📤 Export Application Settings", variant="secondary")
+                        settings_status = gr.Markdown("")
             
             with gr.Row():
                 with gr.Column():
                     gr.Markdown("""
-                    <div class="warning-box">
+                    <div class="warning-box" style="background-color: var(--ctp-mantle); border: 1px solid var(--ctp-border); border-radius: 8px; padding: 15px; margin-top: 20px;">
                     <strong>⚙️ System Requirements:</strong>
-                    <ul>
+                    <ul style="color: var(--ctp-text);">
                     <li>Poppler required for PDF processing</li>
                     <li>Minimum 2GB RAM recommended</li>
                     <li>Internet connection for dictionary lookup</li>
@@ -1341,40 +1432,6 @@ def create_enhanced_ui():
             <span class="status-tag">Not run</span>
         </div>
         """)
-        
-        # Event handlers
-        def apply_dense_preset():
-            return [0.3, 3, 3, 0.8]
-        
-        def apply_sparse_preset():
-            return [0.8, 8, 1, 1.2]
-        
-        def apply_forms_preset():
-            return [1.2, 5, 2, 1.0]
-        
-        def apply_historical_preset():
-            return [0.4, 2, 2, 0.7]
-        
-        # Connect preset buttons
-        dense_btn.click(
-            fn=apply_dense_preset,
-            outputs=[scale_slider, margin_slider, words_slider, text_scale_slider]
-        )
-        
-        sparse_btn.click(
-            fn=apply_sparse_preset,
-            outputs=[scale_slider, margin_slider, words_slider, text_scale_slider]
-        )
-        
-        forms_btn.click(
-            fn=apply_forms_preset,
-            outputs=[scale_slider, margin_slider, words_slider, text_scale_slider]
-        )
-        
-        historical_btn.click(
-            fn=apply_historical_preset,
-            outputs=[scale_slider, margin_slider, words_slider, text_scale_slider]
-        )
         
         # Export functionality
         def handle_image_export(text, format_type):
@@ -1434,16 +1491,6 @@ def create_enhanced_ui():
             fn=process_pdf_enhanced,
             inputs=[pdf_input, pdf_dictionary, pdf_scale, pdf_margin, pdf_words, pdf_text_scale, pdf_debug, pdf_cloud_ocr],
             outputs=[pdf_text_output, pdf_image_output, pdf_page_info]
-        )
-        
-        # Batch processing placeholder
-        def process_batch(files, scale, margin, use_dictionary):
-            return {"files_processed": len(files) if files else 0, "status": "Batch processing not yet implemented"}
-        
-        batch_process_btn.click(
-            fn=process_batch,
-            inputs=[batch_files, batch_scale, batch_margin, batch_dictionary],
-            outputs=batch_summary
         )
     
     return demo
