@@ -1,23 +1,10 @@
-# Detect and Read Handwritten Words
+# HTR using CRNN and CTC
 
-This is a **handwritten text recognition (HTR) pipeline** that operates on **scanned pages** and applies the following
-operations:
-
+This is a **handwritten text recognition (HTR) pipeline** that operates on **scanned pages and PDFs** and applies the following:
 * Detect words
 * Read words
 
-![example](./doc/example.png)
-
-## Installation
-
-* Download the zipped [model weights](https://www.dropbox.com/s/j1hl6bppecug0sz/models.zip?dl=0)
-* Unzip
-* Copy the files (reader.onnx, reader.json, detector.onnx) into the folder `htr_pipeline/models`
-* Go to the root level of the repository (where `setup.py` is located)
-* Execute `pip install .`
-
 ## Usage
-
 ### Run demo
 
 * Additionally install matplotlib for plotting: `pip install matplotlib`
@@ -29,6 +16,7 @@ operations:
 
 * Additionally install gradio: `pip install gradio`
 * Go to the root directory of the repository
+<<<<<<< HEAD
 * Run `python scripts/gradio_demo.py`
 * Open the URL shown in the output
 
@@ -83,6 +71,11 @@ Example: it is known that all lines contain 2 or more words. Then set the parame
 * Improve inference speed
 
 
+=======
+* Run `python scripts/pdf_gradio_demo.py`
+* Open the URL shown in the output, it changes for each iteration.
+  
+>>>>>>> c4824332129f4e936047b360d5da53282c7b1d93
 ### Final Words: How to Append PDFs
 Install the following:
 pip install PyPDF2 pdf2image pillow
