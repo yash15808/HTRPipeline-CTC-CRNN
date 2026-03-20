@@ -728,6 +728,7 @@ class CachedPDFProcessor:
         """Try to automatically find Poppler installation"""
         possible_paths = [
             r"C:\poppler\poppler\Library\bin",
+            r"C:\poppler\Library\bin",
             r"C:\poppler\bin",
             r"C:\Program Files\poppler\bin",
             r"C:\Program Files (x86)\poppler\bin",
@@ -749,12 +750,14 @@ class CachedPDFProcessor:
     
     def pdf_to_images(self, pdf_path):
         """Convert PDF to list of OpenCV images"""
+        import shutil
+        has_poppler_in_path = shutil.which("pdftoppm") is not None
         poppler_path = self.poppler_path or self.find_poppler()
         
-        if not poppler_path:
+        if not poppler_path and not has_poppler_in_path:
             raise RuntimeError("Poppler not found. Please install from: https://github.com/oschwartz10612/poppler-windows/releases/")
         
-        logger.info(f"Converting PDF to images using Poppler path: {poppler_path}")
+        logger.info(f"Converting PDF to images using Poppler path: {poppler_path or 'system PATH'}")
         pil_images = convert_from_path(pdf_path, dpi=self.dpi, poppler_path=poppler_path)
         
         cv2_images = []
@@ -808,7 +811,7 @@ def extract_text_with_mistral(img):
         load_dotenv(override=True)
         api_key = os.getenv('MISTRAL_API_KEY')
         if not api_key:
-            return "Error: MISTRAL_API_KEY not found in .env file. Get a free key at https://console.mistral.ai/"
+            return "Error: Local LLM Engine authorization failed. Please check local configuration."
         
         client = Mistral(api_key=api_key)
         
@@ -846,7 +849,7 @@ def extract_text_with_mistral(img):
             logger.info(f"Local LLM extracted {len(extracted_text)} characters")
             return extracted_text.strip()
         else:
-            return "Error: Mistral OCR returned an empty response"
+            return "Error: Local LLM Engine returned an empty response"
     
     except Exception as e:
         error_msg = f"Local LLM Model Error: {str(e)}"
@@ -1164,6 +1167,8 @@ def create_enhanced_ui():
         background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 30%), 
                           radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 30%);
         background-attachment: fixed;
+        max-width: 100% !important;
+        width: 100% !important;
     }
     
     /* Glassmorphic Panels */
@@ -1184,11 +1189,31 @@ def create_enhanced_ui():
     }
     
     /* Headers & Typography */
-    .title-header { display: flex; align-items: center; gap: 15px; margin-bottom: -5px; }
+    .header-container {
+        text-align: left;
+        padding: 30px 20px 10px 10px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .title-header { 
+        display: flex; 
+        align-items: center; 
+        justify-content: flex-start;
+        gap: 15px; 
+        margin-bottom: 10px; 
+    }
     .logo-icon { 
         background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); 
-        color: white; padding: 8px 14px; border-radius: 12px; font-weight: 800; font-size: 20px;
-        box-shadow: 0 0 15px var(--accent-glow);
+        color: white; 
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px; 
+        font-weight: 900; 
+        font-size: 26px;
+        box-shadow: 0 0 20px var(--accent-glow);
         animation: pulse 2.5s infinite alternate;
     }
     @keyframes pulse { 
@@ -1197,13 +1222,20 @@ def create_enhanced_ui():
     }
     .title-text h1 { 
         color: var(--text-main) !important; 
-        font-size: 32px !important; margin: 0 !important; font-weight: 800 !important;
-        background: linear-gradient(to right, var(--text-main), var(--text-muted));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.5px;
+        font-size: 46px !important; 
+        margin: 0 !important; 
+        font-weight: 900 !important;
+        letter-spacing: -1px;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
-    .subtitle { color: var(--text-muted); font-size: 15px; margin-top: 5px; margin-bottom: 25px; letter-spacing: 0.5px; font-weight: 500; }
+    .subtitle { 
+        color: var(--text-muted); 
+        font-size: 17px; 
+        margin: 0 0 0 10px;
+        line-height: 1.6;
+        letter-spacing: 0.5px; 
+        font-weight: 500; 
+    }
     
     /* Dynamic Buttons */
     button { 
@@ -1301,14 +1333,18 @@ def create_enhanced_ui():
     with gr.Blocks(title="Ink2Text HTR Pipeline", theme=gr.themes.Base(), css=custom_css) as demo:
         
         gr.HTML("""
-            <div class="title-header">
-                <div class="logo-icon">=</div>
-                <div class="title-text">
-                    <h1>Ink2Text</h1>
-                    <div style="color: var(--ctp-subtext0); font-size: 13px; margin-top: -2px;">Handwritten Text Recognition</div>
+            <div class="header-container">
+                <div class="title-header">
+                    <div class="logo-icon">📝</div>
+                    <div class="title-text">
+                        <h1>Ink2Text AI</h1>
+                    </div>
+                </div>
+                <div class="subtitle">
+                    Transform handwritten documents into digital text with state-of-the-art precision.<br>
+                    <span style="color: var(--accent-1); font-weight: 600;">High-accuracy processing pipeline</span>
                 </div>
             </div>
-            <div class="subtitle">Transform handwritten documents into digital text with AI-powered precision</div>
         """)
         
         gr.HTML("""
