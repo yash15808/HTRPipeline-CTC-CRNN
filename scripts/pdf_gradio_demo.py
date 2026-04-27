@@ -643,6 +643,9 @@ import gradio as gr
 import numpy as np
 from PIL import Image
 from pdf2image import convert_from_path
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from htr_pipeline import read_page, DetectorConfig, LineClusteringConfig, ReaderConfig, PrefixTree
 import logging
 from datetime import datetime
@@ -857,29 +860,16 @@ def extract_text_with_mistral(img):
         return error_msg
 
 # SAFE Processing Function with error handling for '+' issue
-def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug=False, use_cloud_ocr=False):
+def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug=False, use_cloud_ocr=False, progress=None):
     """Safe version of process_page that handles the '+' error"""
     try:
+        if progress: progress(0.05, desc="Validating image...")
         if img is None:
             return "Please provide an image", None, []
         
-        # --- Cloud OCR (Mistral) path ---
-        if use_cloud_ocr:
-            logger.info("Using Local LLM for text extraction")
-            text = extract_text_with_mistral(img)
-            # Return original image as visualization (no bounding boxes)
-            if len(img.shape) == 2:
-                vis_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
-            else:
-                vis_img = img.copy()
-            return text, vis_img, []
-        
-        # --- Local ONNX path (unchanged) ---
+        # --- Local ONNX path (always runs to get bounding boxes) ---
         # Input validation
         validate_inputs(scale, margin, min_words_per_line, text_scale)
-        
-        if img is None:
-            return "Please provide an image", None, []
             
         logger.info(f"Processing image with scale={scale}, margin={margin}, use_dict={use_dictionary}")
         
@@ -898,6 +888,7 @@ def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, te
             if debug:
                 print(f"DEBUG: Resized image from {width}x{height} to {new_width}x{new_height}")
         
+        if progress: progress(0.2, desc="Detecting and recognizing text lines...")
         # Try to read page with error handling
         try:
             read_lines = read_page(img,
@@ -921,6 +912,7 @@ def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, te
         for read_line in read_lines:
             res += ' '.join(read_word.text for read_word in read_line) + '\n'
 
+        if progress: progress(0.7, desc="Generating visualizations...")
         # create visualization to show with improved styling
         if len(img.shape) == 2:
             vis_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
@@ -940,16 +932,30 @@ def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, te
                               (aabb.xmax, aabb.ymax),
                               bbox_color,
                               2)
-                # Draw text with improved font and styling
-                cv2.putText(vis_img,
-                            read_word.text,
-                            (aabb.xmin, aabb.ymin - 5),
-                            cv2.FONT_HERSHEY_COMPLEX,  # Changed to COMPLEX for better readability
-                            text_scale,
-                            color=text_color,
-                            thickness=1 if text_scale < 1.0 else 2)  # Thinner text for smaller scale
+                # Draw text with improved font and styling only when not using advanced LLM
+                if not use_cloud_ocr:
+                    cv2.putText(vis_img,
+                                read_word.text,
+                                (aabb.xmin, aabb.ymin - 5),
+                                cv2.FONT_HERSHEY_COMPLEX,  # Changed to COMPLEX for better readability
+                                text_scale,
+                                color=text_color,
+                                thickness=1 if text_scale < 1.0 else 2)  # Thinner text for smaller scale
         
         logger.info(f"Processed image successfully, found {len(read_lines)} lines")
+        
+        # --- Advanced Accuracy (Local LLM) Override ---
+        # If enabled, fetch highly accurate text while still returning the bounding boxes drawn above!
+        if use_cloud_ocr:
+            if progress: progress(0.85, desc="Calling Local LLM for advanced accuracy...")
+            logger.info("Using Local LLM for advanced text extraction")
+            cloud_text = extract_text_with_mistral(img)
+            # Override local ONNX text with cloud LLM text
+            if "Error:" not in cloud_text:
+                res = cloud_text
+            else:
+                res = cloud_text + f"\n\n[Fallback applied: Displaying default ONNX pipeline output below...]\n\n" + res
+
         return res, vis_img, read_lines
 
     except Exception as e:
@@ -975,7 +981,8 @@ def safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, te
 def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_line, text_scale, debug=False, use_cloud_ocr=False):
     """Enhanced PDF processing with progress and better error handling"""
     if pdf_file is None:
-        return "Please upload a PDF file", None, "**Status:** Waiting for PDF upload..."
+        yield "Please upload a PDF file", None, "**Status:** Waiting for PDF upload...", generate_progress_html(0, "Waiting for upload...")
+        return
     
     try:
         # Get PDF path safely
@@ -986,18 +993,23 @@ def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_
         
         # Validate PDF file
         if not os.path.exists(pdf_path):
-            return f"File not found: {pdf_path}", None, "**Status:** File not found"
+            yield f"File not found: {pdf_path}", None, "**Status:** File not found", generate_progress_html(0, "File not found")
+            return
             
         if not pdf_path.lower().endswith('.pdf'):
-            return "Please upload a valid PDF file", None, "**Status:** Invalid file type"
+            yield "Please upload a valid PDF file", None, "**Status:** Invalid file type", generate_progress_html(0, "Invalid file type")
+            return
         
         logger.info(f"Processing PDF: {pdf_path}")
+        
+        yield gr.update(), gr.update(), "**Status:** Converting PDF to images...", generate_progress_html(10, "Converting PDF to images...")
         
         # Convert PDF to images
         images = pdf_processor.pdf_to_images(pdf_path)
         
         if not images:
-            return "No pages found in PDF", None, "**Status:** No pages found in PDF"
+            yield "No pages found in PDF", None, "**Status:** No pages found in PDF", generate_progress_html(0, "No pages found")
+            return
         
         # Process pages
         full_text = ""
@@ -1008,6 +1020,9 @@ def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_
         
         for page_num, image in enumerate(images):
             try:
+                progress_pct = 20 + int(80 * (page_num / len(images)))
+                yield gr.update(), gr.update(), f"**Status:** Processing page {page_num + 1}/{len(images)}...", generate_progress_html(progress_pct, f"Processing page {page_num + 1}/{len(images)}...")
+                
                 if debug:
                     print(f"DEBUG: Processing page {page_num + 1}/{len(images)}")
                 
@@ -1067,7 +1082,7 @@ def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_
         
         # Return first visualization if available
         vis_output = visualization_images[0] if visualization_images else None
-        return full_text, vis_output, page_info
+        yield full_text, vis_output, page_info, generate_progress_html(100, "Processing complete!")
         
     except Exception as e:
         error_msg = f"Error processing PDF: {str(e)}"
@@ -1076,7 +1091,7 @@ def process_pdf_enhanced(pdf_file, use_dictionary, scale, margin, min_words_per_
             import traceback
             error_msg += f"\n\nTraceback:\n{traceback.format_exc()}"
         error_msg += "\n\nPlease ensure Poppler is installed from: https://github.com/oschwartz10612/poppler-windows/releases/"
-        return error_msg, None, "**Status:** Error processing PDF"
+        yield error_msg, None, "**Status:** Error processing PDF", generate_progress_html(0, "Error processing PDF")
 
 # FIXED Export functionality
 def simple_export(text, format_type):
@@ -1119,6 +1134,14 @@ def simple_export(text, format_type):
     except Exception as e:
         print(f"❌ Export error: {e}")
         return None
+
+def generate_progress_html(percentage, text):
+    return f"""
+    <div class="status-prepare" style="background: linear-gradient(90deg, rgba(59, 130, 246, 0.4) {percentage}%, rgba(30, 41, 59, 0.45) {percentage}%);">
+        <span style="font-size: 14px;">{percentage}%</span> 
+        <span style="font-size: 14px;">{text}</span>
+    </div>
+    """
 
 # Create the enhanced UI with improved color scheme
 def create_enhanced_ui():
@@ -1347,19 +1370,14 @@ def create_enhanced_ui():
             </div>
         """)
         
-        gr.HTML("""
-            <div class="status-prepare">
-                <span style="font-size: 14px;">0%</span> 
-                <span style="font-size: 14px;">Preparing...</span>
-            </div>
-        """)
+        global_progress = gr.HTML(generate_progress_html(0, "Ready"))
         
         with gr.Tab("🖼️ Single Image Processing"):
             gr.Markdown("### Process Individual Handwritten Images")
             
             with gr.Row(equal_height=False):
                 with gr.Column(scale=1):
-                    image_input = gr.Image(label='Upload Handwritten Image', type="numpy", height=300)
+                    image_input = gr.Image(label='Upload Handwritten Image', type="numpy", height=300, webcam_options={"mirror": False})
                     
                     with gr.Group():
                         with gr.Accordion("⚙️ Parameters", open=True):
@@ -1376,7 +1394,7 @@ def create_enhanced_ui():
                                 debug_checkbox = gr.Checkbox(value=False, label='Enable Debug Mode')
                                 flip_checkbox = gr.Checkbox(value=False, label='Flip Image (Webcam Fix)')
                             with gr.Row():
-                                cloud_ocr_checkbox = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
+                                cloud_ocr_checkbox = gr.Checkbox(value=True, visible=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
                         
                     process_btn = gr.Button("🎯 Process Image", variant="primary", size="lg", elem_classes="process-btn")
                 
@@ -1414,7 +1432,7 @@ def create_enhanced_ui():
                             pdf_words = gr.Slider(1, 10, 2, step=1, label='Minimum Words Per Line')
                             pdf_text_scale = gr.Slider(0.5, 2.0, 1.0, step=0.1, label='Visualization Text Size')
                             pdf_debug = gr.Checkbox(value=False, label='Enable Debug Mode')
-                            pdf_cloud_ocr = gr.Checkbox(value=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
+                            pdf_cloud_ocr = gr.Checkbox(value=True, visible=False, label='🤖 Use Local LLM Model (Advanced Accuracy)')
                         
                     pdf_process_btn = gr.Button("🎯 Process PDF Document", variant="primary", size="lg", elem_classes="process-btn")
                 
@@ -1510,23 +1528,27 @@ def create_enhanced_ui():
         )
         
         # Connect processing buttons - use safe_process_page for single image
-        def safe_process_page_wrapper(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, flip_image, use_cloud_ocr):
+        def safe_process_page_wrapper(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, flip_image, use_cloud_ocr, progress=gr.Progress()):
+            yield gr.update(), gr.update(), generate_progress_html(10, "Starting image processing...")
+            progress(0, desc="Starting image processing...")
             if img is not None and flip_image:
                 import cv2
                 img = cv2.flip(img, 1)
-            text, vis_img, _ = safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, use_cloud_ocr=use_cloud_ocr)
-            return text, vis_img
+            yield gr.update(), gr.update(), generate_progress_html(40, "Extracting text and generating visualization...")
+            text, vis_img, _ = safe_process_page(img, scale, margin, use_dictionary, min_words_per_line, text_scale, debug, use_cloud_ocr=use_cloud_ocr, progress=progress)
+            progress(1.0, desc="Done")
+            yield text, vis_img, generate_progress_html(100, "Processing complete")
         
         process_btn.click(
             fn=safe_process_page_wrapper,
             inputs=[image_input, scale_slider, margin_slider, dictionary_checkbox, words_slider, text_scale_slider, debug_checkbox, flip_checkbox, cloud_ocr_checkbox],
-            outputs=[text_output, image_output]
+            outputs=[text_output, image_output, global_progress]
         )
         
         pdf_process_btn.click(
             fn=process_pdf_enhanced,
             inputs=[pdf_input, pdf_dictionary, pdf_scale, pdf_margin, pdf_words, pdf_text_scale, pdf_debug, pdf_cloud_ocr],
-            outputs=[pdf_text_output, pdf_image_output, pdf_page_info]
+            outputs=[pdf_text_output, pdf_image_output, pdf_page_info, global_progress]
         )
     
     return demo

@@ -159,7 +159,7 @@ with gr.Blocks(title="Ink2Text Handwritten Text Recognition Pipeline", theme=gr.
         gr.Markdown("### Process a single handwritten text image")
         with gr.Row():
             with gr.Column():
-                image_input = gr.Image(label='Input image', type="numpy")
+                image_input = gr.Image(label='Input image', type="numpy", webcam_options={"mirror": False})
                 scale_slider = gr.Slider(0.01, 15, 1, step=0.01, label='Scale') 
                 margin_slider = gr.Slider(0, 20, 5, step=1, label='Margin')
                 dictionary_checkbox = gr.Checkbox(value=False, label='Use dictionary')

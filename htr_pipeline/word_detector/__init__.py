@@ -1,3 +1,4 @@
+import os
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import List
@@ -5,7 +6,6 @@ from typing import List
 import cv2
 import numpy as np
 import onnxruntime as ort
-from pkg_resources import resource_filename
 from sklearn.cluster import DBSCAN
 
 from .aabb import AABB
@@ -16,7 +16,9 @@ from .iou import compute_iou
 
 def _load_model():
     """Loads model and model metadata."""
-    ort_session = ort.InferenceSession(resource_filename('htr_pipeline', 'models/detector.onnx'),
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    onnx_path = os.path.join(base_dir, 'models', 'detector.onnx')
+    ort_session = ort.InferenceSession(onnx_path,
                                        providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
 
     return ort_session

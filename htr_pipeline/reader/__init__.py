@@ -1,20 +1,23 @@
 import json
 import math
+import os
 from typing import Optional
 
 import cv2
 import numpy as np
 import onnxruntime as ort
-from pkg_resources import resource_filename
 
 from .ctc import ctc_best_path, ctc_single_word_beam_search, PrefixTree
 
 
 def _load_model():
     """Loads model and model metadata."""
-    ort_session = ort.InferenceSession(resource_filename('htr_pipeline', 'models/reader.onnx'),
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    onnx_path = os.path.join(base_dir, 'models', 'reader.onnx')
+    json_path = os.path.join(base_dir, 'models', 'reader.json')
+    ort_session = ort.InferenceSession(onnx_path,
                                        providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
-    with open(resource_filename('htr_pipeline', 'models/reader.json')) as f:
+    with open(json_path) as f:
         chars = json.load(f)['chars']
     return ort_session, chars
 
