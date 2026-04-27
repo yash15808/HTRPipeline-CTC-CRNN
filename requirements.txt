@@ -1,0 +1,13 @@
+numpy
+onnxruntime
+opencv-python
+scikit-learn
+python-Levenshtein
+path
+pillow
+gradio
+matplotlib
+mistralai
+python-dotenv
+pdf2image
+PyPDF2
